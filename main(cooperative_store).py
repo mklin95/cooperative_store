@@ -42,7 +42,7 @@ async def on_message(message):
     for i in result:
       await message.channel.send(str(i[0]) + " / " + str(i[1]) + " / " + str(i[2]))
 
-  if pid == 875974761056972880 and (x[0] == 'A' or x[0] == 'S' or x[0] == 'C'):  #me
+  if pid == my_discord_id and (x[0] == 'A' or x[0] == 'S' or x[0] == 'C'):  #me
     person = int(x[1])
     do = "SELECT seatnum, money, cons, id FROM member where seatnum = " + str(person)
     c.execute(do)
@@ -101,7 +101,7 @@ async def on_message(message):
     if money < 0:
       await message.channel.send("<@" + str(id) + ">" + "乙己你還欠我" + str(abs(money)) + "個錢哩")
 
-  elif pid == 875974761056972880 and x[0] == 'T':
+  elif pid == my_discord_id and x[0] == 'T':
     xt = s.split()
     person1 = int(xt[1])
     person2 = int(xt[3])
@@ -144,7 +144,7 @@ async def on_message(message):
     if money2 < 0:
       await message.channel.send("<@" + str(id2) + ">" + "乙己你還欠我" + str(abs(money2)) + "個錢哩")
 
-  elif pid == 875974761056972880 and x[0] == "ALL":
+  elif pid == my_discord_id and x[0] == "ALL":
     exesearch = "SELECT TID, trader, time, amount, type FROM trade where trader = " + str(x[1])
     c.execute(exesearch)
     sresult = c.fetchall()
@@ -153,7 +153,7 @@ async def on_message(message):
     for i in sresult:
       await message.channel.send(i)
 
-  elif pid != 875974761056972880 and pid != 1118896563322896476:  #others
+  elif pid != my_discord_id and pid != 1118896563322896476:  #others
     findnum = "SELECT seatnum, money, cons FROM member where id = \"" + str(pid) + "\""
     c.execute(findnum)
     result1 = c.fetchall()
